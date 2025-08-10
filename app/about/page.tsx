@@ -1,5 +1,4 @@
 import { Metadata } from 'next'
-import { motion } from "framer-motion"
 import { Users, Target, Heart, Award, Calendar, MapPin } from "lucide-react"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import Header from "@/components/header"
@@ -60,12 +59,7 @@ export default function AboutPage() {
       <div className="pt-24 pb-16 px-4">
         <div className="max-w-6xl mx-auto">
           {/* Hero Section */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-16"
-          >
+          <div className="text-center mb-16">
             <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">About Thanima</h1>
             <div className="bg-white/10 backdrop-blur-md rounded-2xl p-8 shadow-2xl">
               <p className="text-xl text-white leading-relaxed max-w-4xl mx-auto">
@@ -75,7 +69,7 @@ export default function AboutPage() {
                 for artistic expression.
               </p>
             </div>
-          </motion.div>
+          </ClientWrapper>
 
           {/* Mission & Vision */}
           <div className="grid md:grid-cols-2 gap-8 mb-16">
