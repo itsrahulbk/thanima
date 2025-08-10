@@ -1,0 +1,26 @@
+{
+  "name": "Thanima Cultural Club",
+  "short_name": "Thanima",
+  "description": "Where creativity meets culture - Join our vibrant community of artists, musicians, and performers",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#162E1C",
+  "theme_color": "#162E1C",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/images/placeholder-logo.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/images/placeholder-logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["education", "entertainment", "lifestyle"],
+  "lang": "en-US"
+} 
