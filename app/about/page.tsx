@@ -69,15 +69,12 @@ export default function AboutPage() {
                 for artistic expression.
               </p>
             </div>
-          </ClientWrapper>
+          </div>
 
           {/* Mission & Vision */}
           <div className="grid md:grid-cols-2 gap-8 mb-16">
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
+            <div
+              className="animate-fade-in"
             >
               <Card className="bg-white/10 backdrop-blur-md border border-white/20 text-white h-full">
                 <CardHeader>
@@ -94,13 +91,10 @@ export default function AboutPage() {
                   </p>
                 </CardContent>
               </Card>
-            </motion.div>
+            </div>
 
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
+            <div
+              className="animate-fade-in"
             >
               <Card className="bg-white/10 backdrop-blur-md border border-white/20 text-white h-full">
                 <CardHeader>
@@ -117,26 +111,19 @@ export default function AboutPage() {
                   </p>
                 </CardContent>
               </Card>
-            </motion.div>
+            </div>
           </div>
 
           {/* Values */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="mb-16"
+          <div
+            className="mb-16 animate-fade-in"
           >
             <h2 className="text-3xl font-bold text-white text-center mb-8">Our Values</h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
               {values.map((value, index) => (
-                <motion.div
+                <div
                   key={index}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
-                  viewport={{ once: true }}
+                  className="animate-fade-in"
                 >
                   <Card className="bg-white/10 backdrop-blur-md border border-white/20 text-white h-full text-center">
                     <CardHeader>
@@ -147,31 +134,23 @@ export default function AboutPage() {
                       <p className="text-sm">{value.description}</p>
                     </CardContent>
                   </Card>
-                </motion.div>
+                </div>
               ))}
             </div>
-          </motion.div>
+          </div>
 
           {/* Timeline */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="mb-16"
+          <div
+            className="mb-16 animate-fade-in"
           >
             <h2 className="text-3xl font-bold text-white text-center mb-8">Our Journey</h2>
             <Card className="bg-white/10 backdrop-blur-md border border-white/20 text-white">
               <CardContent className="p-8">
                 <div className="space-y-6">
                   {milestones.map((milestone, index) => (
-                    <motion.div
+                    <div
                       key={index}
-                      initial={{ opacity: 0, x: -30 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      transition={{ duration: 0.6, delay: index * 0.1 }}
-                      viewport={{ once: true }}
-                      className="flex items-center space-x-4"
+                      className="flex items-center space-x-4 animate-fade-in"
                     >
                       <div className="flex-shrink-0 w-16 h-16 bg-green-600 rounded-full flex items-center justify-center">
                         <span className="text-white font-bold">{milestone.year}</span>
@@ -179,19 +158,16 @@ export default function AboutPage() {
                       <div className="flex-grow">
                         <p className="text-white text-lg">{milestone.event}</p>
                       </div>
-                    </motion.div>
+                    </div>
                   ))}
                 </div>
               </CardContent>
             </Card>
-          </motion.div>
+          </div>
 
           {/* Contact Info */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
+          <div
+            className="animate-fade-in"
           >
             <Card className="bg-white/10 backdrop-blur-md border border-white/20 text-white">
               <CardHeader>
@@ -213,7 +189,7 @@ export default function AboutPage() {
                 </div>
               </CardContent>
             </Card>
-          </motion.div>
+          </div>
         </div>
       </div>
     </div>

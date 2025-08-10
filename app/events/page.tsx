@@ -1,5 +1,4 @@
 import { Metadata } from 'next'
-import { motion } from "framer-motion"
 import { Calendar, MapPin, Clock, Users, Trophy, Music, Palette, Drama, Camera, Mic } from "lucide-react"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
@@ -115,7 +114,7 @@ export default function EventsPage() {
 
       <div className="pt-24 pb-16 px-4">
         <div className="max-w-6xl mx-auto">
-          <motion.div
+          <div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
@@ -126,11 +125,11 @@ export default function EventsPage() {
               Discover our exciting lineup of cultural events, workshops, and competitions designed to nurture
               creativity and talent.
             </p>
-          </motion.div>
+          </div>
 
           <div className="grid gap-8">
             {events.map((event, index) => (
-              <motion.div
+              <div
                 key={event.id}
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -210,7 +209,7 @@ export default function EventsPage() {
                     </div>
                   </CardContent>
                 </Card>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>

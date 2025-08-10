@@ -1,7 +1,6 @@
 "use client"
 
-import { useState } from "react"
-import { motion } from "framer-motion"
+import { useState, useEffect } from "react"
 import { Menu, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
@@ -18,22 +17,35 @@ const navigation = [
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
   const pathname = usePathname()
 
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50)
+    }
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
   return (
-    <header className="fixed top-6 left-1/2 transform -translate-x-1/2 z-50 w-full max-w-4xl px-4">
-      <div className="bg-white/2 backdrop-blur-md border border-white/5 rounded-3xl shadow-2xl">
-        <div className="flex justify-between items-center px-8 py-4">
-          {/* Left Navigation */}
-          <nav className="hidden md:flex items-center space-x-1">
+    <header className={`fixed top-0 left-0 right-0 z-50 w-full transition-all duration-300 ${
+      scrolled ? 'bg-black/20 backdrop-blur-md border-b border-white/10' : 'bg-transparent'
+    }`}>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between items-center py-4">
+          {/* Left Navigation - Hidden on small screens */}
+          <nav className="hidden lg:flex items-center space-x-2">
             {navigation.slice(0, 3).map((item) => {
               const isActive = pathname === item.href
               return (
                 <Link key={item.name} href={item.href}>
                   <Button
                     variant="ghost"
-                    className={`rounded-xl transition-all duration-300 font-medium text-sm ${
-                      isActive ? "bg-white/10 text-white shadow-lg" : "text-white/60 hover:text-white hover:bg-white/5"
+                    className={`rounded-xl transition-all duration-300 font-medium text-sm hover:scale-105 ${
+                      isActive 
+                        ? "bg-white/20 text-white shadow-lg ring-2 ring-white/30" 
+                        : "text-white/80 hover:text-white hover:bg-white/10 hover:shadow-lg"
                     }`}
                   >
                     {item.name}
@@ -43,31 +55,34 @@ export default function Header() {
             })}
           </nav>
 
-          {/* Center Logo - Floating */}
-          <Link href="/" className="flex items-center">
-            <motion.div
-              whileHover={{ scale: 1.1, rotate: 5 }}
-              transition={{ type: "spring", stiffness: 300, damping: 20 }}
-              className="w-16 h-16 relative bg-white/5 rounded-2xl p-2 backdrop-blur-sm border border-white/10 shadow-xl"
-            >
-              <img
-                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/thanima-2-I6Vz9KfL2P1jVM7ZhXVzx9kd0WRcoU.png"
-                alt="Thanima Logo"
-                className="object-contain w-full h-full"
-              />
-            </motion.div>
+          {/* Center Logo - Always visible and centered */}
+          <Link href="/" className="flex items-center justify-center flex-1 lg:flex-none">
+            <div className="group relative">
+              <div className="w-24 h-24 sm:w-28 sm:h-28 lg:w-32 lg:h-32 xl:w-36 xl:h-36 relative p-3 transition-all duration-300 hover:scale-110 hover:rotate-2">
+                <img
+                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/thanima-2-I6Vz9KfL2P1jVM7ZhXVzx9kd0WRcoU.png"
+                  alt="Thanima Logo"
+                  className="object-contain w-full h-full transition-transform duration-300 group-hover:scale-105"
+                />
+              </div>
+              {/* Floating particles effect */}
+              <div className="absolute -top-2 -right-2 w-3 h-3 bg-yellow-400 rounded-full animate-pulse opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div className="absolute -bottom-2 -left-2 w-2 h-2 bg-green-400 rounded-full animate-pulse opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-200"></div>
+            </div>
           </Link>
 
-          {/* Right Navigation */}
-          <nav className="hidden md:flex items-center space-x-1">
+          {/* Right Navigation - Hidden on small screens */}
+          <nav className="hidden lg:flex items-center space-x-2">
             {navigation.slice(3).map((item) => {
               const isActive = pathname === item.href
               return (
                 <Link key={item.name} href={item.href}>
                   <Button
                     variant="ghost"
-                    className={`rounded-xl transition-all duration-300 font-medium text-sm ${
-                      isActive ? "bg-white/10 text-white shadow-lg" : "text-white/60 hover:text-white hover:bg-white/5"
+                    className={`rounded-xl transition-all duration-300 font-medium text-sm hover:scale-105 ${
+                      isActive 
+                        ? "bg-white/20 text-white shadow-lg ring-2 ring-white/30" 
+                        : "text-white/80 hover:text-white hover:bg-white/10 hover:shadow-lg"
                     }`}
                   >
                     {item.name}
@@ -80,7 +95,7 @@ export default function Header() {
           {/* Mobile menu button */}
           <Button
             variant="ghost"
-            className="md:hidden text-white/60 hover:text-white hover:bg-white/5 rounded-xl"
+            className="lg:hidden text-white/80 hover:text-white hover:bg-white/10 rounded-xl transition-all duration-300 hover:scale-105"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
             {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -89,23 +104,18 @@ export default function Header() {
 
         {/* Mobile Navigation */}
         {mobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            className="md:hidden border-t border-white/5 px-8 py-4"
-          >
-            <nav className="flex flex-col space-y-2">
+          <div className="lg:hidden border-t border-white/10 bg-black/30 backdrop-blur-md rounded-b-2xl overflow-hidden">
+            <nav className="flex flex-col p-4 space-y-2">
               {navigation.map((item) => {
                 const isActive = pathname === item.href
                 return (
                   <Link key={item.name} href={item.href}>
                     <Button
                       variant="ghost"
-                      className={`w-full justify-start rounded-xl transition-all duration-300 font-medium ${
+                      className={`w-full justify-start rounded-xl transition-all duration-300 font-medium hover:scale-105 ${
                         isActive
-                          ? "bg-white/10 text-white shadow-lg"
-                          : "text-white/60 hover:text-white hover:bg-white/5"
+                          ? "bg-white/20 text-white shadow-lg ring-2 ring-white/30"
+                          : "text-white/80 hover:text-white hover:bg-white/10 hover:shadow-lg"
                       }`}
                       onClick={() => setMobileMenuOpen(false)}
                     >
@@ -115,7 +125,7 @@ export default function Header() {
                 )
               })}
             </nav>
-          </motion.div>
+          </div>
         )}
       </div>
     </header>

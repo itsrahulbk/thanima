@@ -1,5 +1,4 @@
 import { Metadata } from 'next'
-import { motion } from "framer-motion"
 import { Mail, Phone, MapPin, Clock, Send, User, MessageSquare } from "lucide-react"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
@@ -66,7 +65,7 @@ export default function ContactPage() {
       <div className="pt-24 pb-16 px-4">
         <div className="max-w-6xl mx-auto">
           {/* Hero Section */}
-          <motion.div
+          <div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
@@ -76,11 +75,11 @@ export default function ContactPage() {
             <p className="text-xl text-white/80 max-w-3xl mx-auto">
               Have questions, suggestions, or want to join our creative community? We'd love to hear from you!
             </p>
-          </motion.div>
+          </div>
 
           <div className="grid lg:grid-cols-2 gap-8 mb-12">
             {/* Contact Form */}
-            <motion.div
+            <div
               initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
@@ -157,10 +156,10 @@ export default function ContactPage() {
                   </Button>
                 </CardContent>
               </Card>
-            </motion.div>
+            </div>
 
             {/* Contact Information */}
-            <motion.div
+            <div
               initial={{ opacity: 0, x: 30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
@@ -186,11 +185,11 @@ export default function ContactPage() {
                   </CardContent>
                 </Card>
               ))}
-            </motion.div>
+            </div>
           </div>
 
           {/* Team Section */}
-          <motion.div
+          <div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
@@ -206,7 +205,7 @@ export default function ContactPage() {
               <CardContent>
                 <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
                   {teamMembers.map((member, index) => (
-                    <motion.div
+                    <div
                       key={index}
                       initial={{ opacity: 0, y: 20 }}
                       whileInView={{ opacity: 1, y: 0 }}
@@ -220,12 +219,12 @@ export default function ContactPage() {
                       <h4 className="font-semibold text-white mb-1">{member.name}</h4>
                       <p className="text-sm text-white/80 mb-2">{member.role}</p>
                       <p className="text-xs text-white/60">{member.email}</p>
-                    </motion.div>
+                    </div>
                   ))}
                 </div>
               </CardContent>
             </Card>
-          </motion.div>
+          </div>
         </div>
       </div>
     </div>

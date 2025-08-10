@@ -1,5 +1,4 @@
 import { Metadata } from 'next'
-import { motion } from "framer-motion"
 import { Users, Mail, Phone, Linkedin, Instagram, Twitter } from "lucide-react"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
@@ -122,11 +121,8 @@ export default function OurCorePage() {
       <div className="pt-24 pb-16 px-4">
         <div className="max-w-6xl mx-auto">
           {/* Hero Section */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-16"
+          <div
+            className="text-center mb-16 animate-fade-in"
           >
             <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">Our Core Team</h1>
             <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-3xl p-8 shadow-2xl max-w-4xl mx-auto">
@@ -135,17 +131,14 @@ export default function OurCorePage() {
                 expertise from various artistic disciplines to create memorable cultural experiences.
               </p>
             </div>
-          </motion.div>
+          </div>
 
           {/* Team Grid */}
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {coreTeam.map((member, index) => (
-              <motion.div
+              <div
                 key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                viewport={{ once: true }}
+                className="animate-fade-in"
               >
                 <Card className="bg-white/10 backdrop-blur-md border border-white/20 text-white h-full hover:bg-white/15 transition-all duration-300">
                   <CardHeader className="text-center">
@@ -214,17 +207,13 @@ export default function OurCorePage() {
                     </div>
                   </CardContent>
                 </Card>
-              </motion.div>
+              </div>
             ))}
           </div>
 
           {/* Join Team CTA */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="mt-16"
+          <div
+            className="mt-16 animate-fade-in"
           >
             <Card className="bg-white/10 backdrop-blur-md border border-white/20 text-white">
               <CardContent className="p-8 text-center">
@@ -249,7 +238,7 @@ export default function OurCorePage() {
                 </div>
               </CardContent>
             </Card>
-          </motion.div>
+          </div>
         </div>
       </div>
     </div>

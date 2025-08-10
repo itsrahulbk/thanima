@@ -1,64 +1,40 @@
 "use client"
 
-import { motion } from "framer-motion"
 import { ReactNode } from "react"
 
 interface ClientWrapperProps {
   children: ReactNode
   className?: string
-  initial?: any
-  animate?: any
-  transition?: any
-  whileInView?: any
-  viewport?: any
-  delay?: number
 }
 
-export function ClientWrapper({
-  children,
-  className = "",
-  initial,
-  animate,
-  transition,
-  whileInView,
-  viewport,
-  delay = 0,
-}: ClientWrapperProps) {
+export function ClientWrapper({ children, className = "" }: ClientWrapperProps) {
   return (
-    <motion.div
-      className={className}
-      initial={initial}
-      animate={animate}
-      transition={transition}
-      whileInView={whileInView}
-      viewport={viewport}
-      style={{ transitionDelay: `${delay}s` }}
-    >
+    <div className={`animate-fade-in ${className}`}>
       {children}
-    </motion.div>
+    </div>
   )
 }
 
 export function MotionH1({ children, ...props }: any) {
-  return <motion.h1 {...props}>{children}</motion.h1>
+  return <h1 className="animate-fade-in" {...props}>{children}</h1>
 }
 
 export function MotionH2({ children, ...props }: any) {
-  return <motion.h2 {...props}>{children}</motion.h2>
+  return <h2 className="animate-fade-in" {...props}>{children}</h2>
 }
 
 export function MotionP({ children, ...props }: any) {
-  return <motion.p {...props}>{children}</motion.p>
+  return <p className="animate-fade-in" {...props}>{children}</p>
 }
 
 export function MotionDiv({ children, ...props }: any) {
-  return <motion.div {...props}>{children}</motion.div>
+  return <div className="animate-fade-in" {...props}>{children}</div>
 }
 
 export function MotionButton({ children, ...props }: any) {
-  return <motion.button {...props}>{children}</motion.button>
+  return <button className="animate-fade-in" {...props}>{children}</button>
 }
 
 export function MotionCard({ children, ...props }: any) {
-  return <motion.div {...props}>{children}</motion.div>
+  return <div className="animate-fade-in" {...props}>{children}</div>
 } 

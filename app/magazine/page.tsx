@@ -1,5 +1,4 @@
 import { Metadata } from 'next'
-import { motion } from "framer-motion"
 import { BookOpen, Calendar, User, Eye, Download, ExternalLink } from "lucide-react"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
@@ -77,7 +76,7 @@ export default function MagazinePage() {
       <div className="pt-24 pb-16 px-4">
         <div className="max-w-6xl mx-auto">
           {/* Hero Section */}
-          <motion.div
+          <div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
@@ -90,13 +89,13 @@ export default function MagazinePage() {
                 artwork, poetry, cultural insights, and stories that celebrate our rich heritage.
               </p>
             </div>
-          </motion.div>
+          </div>
 
           {/* Featured Magazine */}
           {magazines
             .filter((mag) => mag.featured)
             .map((magazine, index) => (
-              <motion.div
+              <div
                 key={magazine.id}
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -169,11 +168,11 @@ export default function MagazinePage() {
                     </div>
                   </div>
                 </Card>
-              </motion.div>
+              </div>
             ))}
 
           {/* Archive */}
-          <motion.div
+          <div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
@@ -184,7 +183,7 @@ export default function MagazinePage() {
               {magazines
                 .filter((mag) => !mag.featured)
                 .map((magazine, index) => (
-                  <motion.div
+                  <div
                     key={magazine.id}
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -238,13 +237,13 @@ export default function MagazinePage() {
                         </div>
                       </CardContent>
                     </Card>
-                  </motion.div>
+                  </div>
                 ))}
             </div>
-          </motion.div>
+          </div>
 
           {/* Submission CTA */}
-          <motion.div
+          <div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
@@ -264,7 +263,7 @@ export default function MagazinePage() {
                 </Button>
               </CardContent>
             </Card>
-          </motion.div>
+          </div>
         </div>
       </div>
     </div>
